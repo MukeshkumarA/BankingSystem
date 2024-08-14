@@ -1,0 +1,83 @@
+<section id="contact">
+
+    <div class="heading">
+      <h2>Contact us</h2>
+    </div>
+
+    <div class="bar">
+
+    </div>
+
+    <div class="contact">
+
+      <h3>we'd like to help!</h3>
+      <p class="subheading">We lie to create things with fun, open-minded people. Feel free to say hello!</p>
+
+
+      <div class="contact-content">
+
+        <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+          <div class="input-details">
+            <input type="text" placeholder="Your name" formControlName="name" />
+            <span class="error" *ngIf="contactForm?.get('name')?.touched && contactForm?.get('name')?.hasError('required')">Name is required</span>
+        
+            <input type="email" placeholder="Enter your email" formControlName="email" />
+            <span class="error" *ngIf="contactForm?.get('email')?.touched && contactForm?.get('email')?.hasError('required')">Email is required</span>
+            <span class="error" *ngIf="contactForm?.get('email')?.touched && contactForm?.get('email')?.hasError('email')">Invalid email format</span>
+            
+            <textarea placeholder="Enter the text" formControlName="description"></textarea>
+            <span class="error" *ngIf="contactForm?.get('description')?.touched && contactForm?.get('description')?.hasError('required')">Message is required</span>
+        
+            <button type="submit" class="contact-submit">Send</button>
+          </div>
+        </form>
+        
+
+        <div class="store-details">
+          <div class="address">
+
+            <!-- <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>-->
+            <fa-icon [icon]="faLocationDot"></fa-icon>
+
+            <div class="addressline1">
+              <p class="name">ABC Bank</p>
+              <p>Cincinnati Ohaio-45248</p>
+              <p>USA</p>
+            </div>
+
+          </div>
+
+          <div class="toll">
+            <!--<i class="fa-solid fa-phone" style="color: #ffffff;"></i>-->
+            <fa-icon [icon]="faPhone"></fa-icon>
+            <div>
+              <p> +1(704)-858-2084 </p>
+            </div>
+
+          </div>
+
+          <div class="mail">
+            <!--<i class="fa-solid fa-envelope" style="color: #ffffff;"></i>-->
+            <fa-icon [icon]="faEnvelope"></fa-icon>
+            <div>
+              <a href="mailto:abc@claysys.com">info@claysys.com</a>
+            </div>
+
+          </div>
+
+          <div class="smallbar"></div>
+
+
+          <div class="social-links">
+            <a href="#"><fa-icon [icon]="faFacebook"></fa-icon></a>
+            <a href="#"><fa-icon [icon]="faInstagram"></fa-icon></a>
+            <a href="#"><fa-icon [icon]="faLinkedin"></fa-icon></a>
+            <a href="#"><fa-icon class="youtube" [icon]="faYoutube"></fa-icon></a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>

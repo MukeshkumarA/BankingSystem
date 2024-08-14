@@ -1,0 +1,261 @@
+
+
+<div class="modal-container">
+    <div class="header">
+        <h2 class="heading">Employee Registration</h2>
+        <fa-icon (click)="closeModal()" [icon]="faXmark" class="close-icon"></fa-icon>
+    </div>
+
+
+    <div class="modal-content">
+    <form id="employeeRegistrationForm">
+
+        <div class="form-horizontal">
+
+        <!-- <div class="header">
+            <h2 class="heading">Employee Registration</h2>
+            <fa-icon (click)="closeModal()" [icon]="faXmark" class="close-icon"></fa-icon>
+        </div> -->
+        <!-- Other form elements... -->
+
+        <div class="form">
+
+                <div class="form-group">
+                <label for="Firstname" class="control-label col-md-2">First name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" [(ngModel)]="employee.firstName" (focusout)="validateFirstname()"/>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error firstnameerror"></div>
+                </div>
+        
+                <div class="form-group">
+                <label for="Lastname" class="control-label col-md-2">Last name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" [(ngModel)]="employee.lastName" (focusout)="validateLastname()"/>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error lastnameerror"></div>
+                </div>
+
+
+                <div class="form-group">
+                <label class="control-label col-md-2">Father name</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="fathername" name="fathername" placeholder="Father name" [(ngModel)]="employee.fatherName" (focusout)="validateFathername()"/>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error fathernameerror"></div>
+                </div>
+        
+                <div class="form-group dateofbirth">
+                <label for="Dateofbirth" class="control-label col-md-2">Date of birth</label>
+                <div class="col-md-10 dob">
+                    <input type="date" class="form-control" id="dateofbirth" name="dateofbirth" [max]="maxDate" [(ngModel)]="employee.dateOfBirth" (focusout)="validateDateOfBirth()" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error dateofbirtherror"></div>
+                </div>
+
+
+                <div class="form-group">
+                <label class="control-label col-md-2">Gender</label>
+                <div class="gender-radio gender">
+                    <input type="radio" name="gender" id="male" value="Male"  [(ngModel)]="employee.gender" />
+                    <label for="gender-male">Male</label>
+                    <input  type="radio" name="gender" id="female" value="Female"  [(ngModel)]="employee.gender" />
+                    <label for="female">Female</label>
+                    <input  type="radio" name="gender" id="others" value="Others" [(ngModel)]="employee.gender" />
+                    <label for="others">Others</label>
+                    <span class="text-danger" ></span>
+                </div>
+                <div class="error gendererror"></div>
+                </div>
+        
+                <div class="form-group">
+                <label for="Phonenumber" class="control-label col-md-2">Phone number</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="phone" name="phonenumber" placeholder="Phone number" [(ngModel)]="employee.phoneNumber" (focusout)="validatePhoneNumber()"  />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error phonenumbererror"></div>
+                </div>
+
+
+                <div class="form-group">
+                <label  for="Aadharnumber" class="control-label col-md-2">Aadhar number</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="aadhar" name="aadhar" placeholder="Aadhar number" [(ngModel)]="employee.aadharNumber"  (focusout)="validateAadharNumber()" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error aadharnumbererror"></div>
+                </div>
+        
+                <div class="form-group">
+                <label for="Email" class="control-label col-md-2">Email</label>
+                <div class="col-md-10">
+                    <input  type="text" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="employee.email" (focusout)="validateEmail()" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error emailerror"></div>
+                </div>
+
+
+                <div class="form-group">
+                <label for="Pannumber" class="control-label col-md-2">Pan</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="pannumber" name="pannumber" placeholder="Pannumber" [(ngModel)]="employee.pan" (focusout)="validatePan()" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error panerror"></div>
+                </div>
+        
+
+                <div class="form-group">
+                <label for="referenceemployeecode" class="control-label col-md-2">Reference</label>
+                <div class="col-md-10">
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="reference"
+                        name="referenceemployeecode"
+                        [(ngModel)]="employee.referenceId"
+                        placeholder="Employee code"
+                        (input)="searchOptions()"
+                        (click)="showOptions = true"                       
+                    />
+                    <span class="text-danger"></span>
+                </div>
+                <!-- <div class="error referenceerror"></div> -->
+                <div class="options-dropdown" *ngIf="showOptions && options.length > 0">
+                    <div *ngFor="let option of options" (click)="selectOption(option)">
+                        {{ option }}
+                    </div>
+                </div>
+            </div>
+
+
+                <div class="form-group">
+                <div class="checkbox">
+                    <input type="checkbox" (change)="toggleHideCommunicationAddress()" />
+                    <label for="hideCommunicationAddressCheckbox">Single address</label>
+                </div>
+
+                <div *ngIf="!hideCommunicationAddress">
+                    <label for="CommunicationAddress" class="control-label col-md-2">Communication address</label>
+                    <div class="col-md-10">
+                        <input type="text" class="form-control" id="communicationAddress" name="communicationAddress"
+                            placeholder="Comm Address" [(ngModel)]="employee.communicationAddress"
+                            (focusout)="validateCommunicationAddress()" />
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="error communicationAddressError"></div>
+                </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                <label for="permanentAddress" class="control-label col-md-2">Permanent address</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="permanentAddress" name="permanentAddress" placeholder="Permanent Address" [(ngModel)]="employee.permanentAddress" (focusout)="validatePermanentAddress()"/>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error permanentAddresserror"></div>
+                </div>
+        
+                <div class="form-group">
+                <label for="State" class="control-label col-md-2">State</label>
+                <div class="col-md-10">
+                    <select class="form-control state" id="statedropdown" name="state" (change)="selectCity($event)" [(ngModel)]="employee.state" (focusout)="validateState()" >
+                    <option value="" disabled selected >Select state</option>
+                    <option *ngFor="let state of states" [value]="state.stateId">{{state.stateName}}</option>
+                    </select>
+                </div>
+                <div class="error stateerror"></div>
+                </div>
+
+                
+                <div class="form-group">
+                <label for="City" class="control-label col-md-2">City</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="city" name="city" (change)="selectBranch($event)" [(ngModel)]="employee.city" (focusout)="validateCity()">
+                    <option value="" disabled selected >Select a city</option>
+                    <option *ngFor="let city of cities" [value]="city.cityId">{{city.cityName}}</option>
+                    </select>
+                </div>
+                <div class="error cityerror"></div>
+                </div>
+        
+                <div class="form-group">
+                <label for="Branch" class="control-label col-md-2">Branch</label>
+                <div class="col-md-10">
+                    <select class="form-control" id="branch" name="branch" [(ngModel)]="employee.branch" (focusout)="validateBranch()" >
+                    <option value="" disabled selected >Select branch</option>
+                    <!-- Add options here -->
+                    <option *ngFor="let branch of branches">{{ branch.branchName }}</option>
+                    </select>
+                </div>
+                <div class="error brancherror"></div>
+                </div>
+
+
+                <div class="form-group">
+                <label for="Pincode" class="control-label col-md-2">Pincode</label>
+                <div class="col-md-10">
+                    <input  type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode" [(ngModel)]="employee.pincode" (focusout)="validatePincode()" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error pincodeerror"></div>
+                </div>
+        
+                <div class="form-group">
+                <label for="Username" class="control-label col-md-2">Username</label>
+                <div class="col-md-10">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username" [(ngModel)]="employee.userName"  (focusout)="validateUsername()" />
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error usernameerror"></div>
+                </div>
+
+
+                <div class="form-group password-instruction">
+                <label for="Password" class="control-label col-md-2">Password</label>
+                <div class="col-md-10">
+                    <input  type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="employee.password" (focusout)="validatePassword()"/>
+                    <span class="text-danger"></span>
+                </div>
+                <div class="error passworderror"></div>
+                <div class="box">
+                    Must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one special character, and one number.
+                </div>
+                </div>
+        
+                <div class="form-group">
+                <label for="Confirmpassword" class="control-label col-md-2">Confirm password</label>
+                <div class="col-md-10">
+                    <input  type="password" class="form-control" id="passwordcheck" name="passwordcheck" placeholder="Confirm password" (focusout)="validateConfirmPassword()"/>
+                    <!-- You can add validation logic for password confirmation if needed -->
+                </div>
+                <div class="error confirmpassworderror"></div>
+                </div>
+            </div>
+
+            <!-- <div class="form-group submit-btn">
+                <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" class="btn btn-default" id="submit-button"/>
+                </div>
+            </div> -->
+
+        </div>
+    </form>
+    </div>
+
+
+    <div class="footer">
+        <!-- Submit button is here -->
+        <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+    </div>
+
+</div>

@@ -1,0 +1,16 @@
+<!-- <app-navigationbar></app-navigationbar>
+
+<router-outlet> </router-outlet>
+
+<app-footer></app-footer> -->
+
+<ng-container *ngIf="!isEmbeddedIframeRoute() && !isIframeRoute()">
+    <app-navigationbar></app-navigationbar>
+  </ng-container>
+  
+  <router-outlet></router-outlet>
+  
+  <ng-container *ngIf="!isEmbeddedIframeRoute() && !isIframeRoute()">
+    <app-footer></app-footer>
+  </ng-container>
+  

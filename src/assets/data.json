@@ -1,0 +1,457 @@
+
+{
+    "users":[
+        {
+            "username": "mukesh",
+            "password": "Mukesh@111",
+            "role": "admin",
+            "profileurl": "assets/testimonal2.jpg"
+        },
+        {
+            "username": "vicky",
+            "password": "Vicky@111",
+            "rusersole": "admin",
+            "profileurl": "assets/testimonal5.jpeg"
+        },
+        {
+          "id": 1,
+          "role": "guest",
+          "gender": "Female",
+          "firstname": "Ahalya",
+          "lastname": "Sundharam",
+          "fathername": "Sundharam",
+          "dateofbirth": "2005-09-01",
+          "phonenumber": "9856854745",
+          "aadhar": "452365457859",
+          "email": "ahalya@gmail.com",
+          "pan": "ABCDE1234F",
+          "address": "1st street Anna nagar",
+          "state": "TamilNadu",
+          "city": "Madurai",
+          "branch": "Sellur",
+          "pincode": "625478",
+          "username": "ahalya",
+          "password": "Ahalya@111"
+        },
+        {
+          "id": 2,
+          "role": "guest",
+          "gender": "Male",
+          "firstname": "Antony",
+          "lastname": "Das",
+          "fathername": "Das",
+          "dateofbirth": "2005-09-02",
+          "phonenumber": "9658696969",
+          "aadhar": "123456789012",
+          "email": "antony@gmail.com",
+          "pan": "FGHIJ5678K",
+          "address": "5th street, Thillai nagar.",
+          "state": "TamilNadu",
+          "city": "Chennai",
+          "branch": "Guindy",
+          "pincode": "635457",
+          "username": "antony",
+          "password": "Antony@111"
+        },
+        {
+          "id": 3,
+          "role": "guest",
+          "gender": "Male",
+          "firstname": "Bharath",
+          "lastname": "Mothirajan",
+          "fathername": "Mothirajan",
+          "email": "bharath@gmail.com",
+          "address": "4th street, Madapuram",
+          "pincode": "625106",
+          "phonenumber": "9652365626",
+          "aadhar": "785452458596",
+          "pan": "LMNOP9012Q",
+          "state": "TamilNadu",
+          "city": "Madurai",
+          "branch": "Sellur",
+          "username": "bharath",
+          "password": "Bharath@111",
+          "dateofbirth": "2005-09-03"
+        },
+        {
+          "id": 4,
+          "role": "guest",
+          "gender": "Female",
+          "firstname": "Brindha",
+          "lastname": "Sivaraman",
+          "fathername": "Sivaraman",
+          "dateofbirth": "2005-09-04",
+          "phonenumber": "9658745869",
+          "aadhar": "785452458594",
+          "email": "brindha@gmail.com",
+          "pan": "AIGHT1234O",
+          "address": "2nd street, Tnagar",
+          "state": "TamilNadu",
+          "city": "Chennai",
+          "branch": "Guindy",
+          "pincode": "628008",
+          "username": "brindha",
+          "password": "Brindha@111"
+        },
+        {
+          "id": 5,
+          "role": "guest",
+          "gender": "Male",
+          "firstname": "Jayanth",
+          "lastname": "Sivaraman",
+          "phonenumber": "9500421458",
+          "email": "jayanth@gmail.com",
+          "fathername": "Sivaraman",
+          "dateofbirth": "2005-09-05",
+          "pan": "BIGHT1234O",
+          "aadhar": "568965874587",
+          "address": "1st street, Thillai nagar.",
+          "state": "Kerala",
+          "city": "Kochin",
+          "branch": "Kochin - 1",
+          "pincode": "658457",
+          "username": "jayanth",
+          "password": "Jayanth@111"
+        }
+    ],
+
+    "loanApplicants":[
+      {
+        "userId": 1,
+        "occupation": "Business",
+        "panNumber": "ABCDE1234F",
+        "loanType": "homeLoan",
+        "status": "pending"
+      },
+      {
+        "userId": 4,
+        "occupation": "Fashion Designer",
+        "panNumber": "AIGHT1234O",
+        "loanType": "homeLoan",
+        "status": "pending"
+      },
+      {
+        "userId": 2,
+        "occupation": "Real Estate",
+        "panNumber": "FGHIJ5678K",
+        "loanType": "homeLoan",
+        "status": "pending"
+      },
+      {
+        "userId": 3,
+        "occupation": "Farmer",
+        "panNumber": "LMNOP9012Q",
+        "loanType": "vehicleLoan",
+        "status": "pending"
+      },
+      {
+        "userId": 5,
+        "occupation": " Physical therapist",
+        "panNumber": "BIGHT1234O",
+        "loanType": "vehicleLoan",
+        "status": "pending"
+      }
+    ],
+
+
+    "pandatas": [
+        {
+          "pan": "ABCDE1234F",
+          "cibilScore": 5.2
+        },
+        {
+          "pan": "FGHIJ5678K",
+          "cibilScore": 8.6
+        },
+        {
+          "pan": "LMNOP9012Q",
+          "cibilScore": 5.6
+        },
+        {
+          "pan": "AIGHT1234O",
+          "cibilScore": 7.7
+        },
+        {
+          "pan": "BIGHT1234O",
+          "cibilScore": 9.2
+        },
+        {
+          "pan": "CIGHT1234O",
+          "cibilScore": 5.9
+        },
+        {
+          "pan": "PIGHT1234O",
+          "cibilScore": 7.1
+        },
+        {
+          "pan": "VIGVT1234O",
+          "cibilScore": 4.5
+        },
+        {
+          "pan": "LIGMT1234O",
+          "cibilScore": 6.1
+        },
+        {
+          "pan": "DIGMT1234O",
+          "cibilScore": 5.9
+        },
+        {
+          "pan": "POKMT1234O",
+          "cibilScore": 6.5
+        },
+        {
+          "pan": "FUCMT1234O",
+          "cibilScore": 8.1
+        },
+        {
+          "pan": "UGSMT1234O",
+          "cibilScore": 4.1
+        },
+        {
+          "pan": "FHGMT1234O",
+          "cibilScore": 6.5
+        }
+      ],
+
+
+
+      
+
+    "creditCardApplicants": [
+      {
+        "userId": 5,
+        "occupation": "Physical therapist",
+        "income": 500000,
+        "maritalStatus": "single",
+        "charges": [
+          "Room & Tax",
+          "Others"
+        ],
+        "communicationMethods": [
+          "Phone number",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 1
+      },
+
+      {
+        "userId": 3,
+        "occupation": "Farmer",
+        "income": 250000,
+        "maritalStatus": "single",
+        "charges": [
+          "City & Tax",
+          "Others"
+        ],
+        "communicationMethods": [
+          "Phone number"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 2
+      },
+
+      {
+        "userId": 1,
+        "occupation": "Business",
+        "income": 700000,
+        "maritalStatus": "single",
+        "charges": [
+          "City & Tax",
+          "Others"
+        ],
+        "communicationMethods": [
+          "Phone number",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 3
+      },
+
+      {
+        "userId": 2,
+        "occupation": "Real Estate",
+        "income": 500000,
+        "maritalStatus": "single",
+        "charges": [
+          "City & Tax",
+          "Others"
+        ],
+        "communicationMethods": [
+          "Phone number",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 4
+      },
+
+      {
+        "userId": 4,
+        "occupation": "Fashion Designer",
+        "income": 400000,
+        "maritalStatus": "single",
+        "charges": [
+          "Room & Tax",
+          "City & Tax"
+        ],
+        "communicationMethods": [
+          "Phone number",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 5
+      }
+    ],
+
+
+
+    "debitCardApplicants": [
+      {
+        "userId": 5,
+        "occupation": "Physical therapist",
+        "income": 500000,
+        "maritalStatus": "single",
+        "charges": [
+          "Room & Tax",
+          "City & Tax"
+        ],
+        "communicationMethods": [
+          "Phone",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 1
+      },
+      {
+        "userId": 3,
+        "occupation": "Farmer",
+        "income": 250000,
+        "maritalStatus": "single",
+        "charges": [
+          "City & Tax",
+          "Others"
+        ],
+        "communicationMethods": [
+          "Phone",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 2
+      },
+      {
+        "userId": 4,
+        "occupation": "Fashion Designer",
+        "income": 400000,
+        "maritalStatus": "single",
+        "charges": [
+          "Room & Tax",
+          "City & Tax"
+        ],
+        "communicationMethods": [
+          "Phone",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 3
+      },
+      {
+        "userId": 2,
+        "occupation": "Real Estate",
+        "income": 500000,
+        "maritalStatus": "single",
+        "charges": [
+          "Room & Tax",
+          "City & Tax"
+        ],
+        "communicationMethods": [
+          "Phone",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 4
+      },
+      {
+        "userId": 1,
+        "occupation": "Business",
+        "income": 700000,
+        "maritalStatus": "single",
+        "charges": [
+          "City & Tax",
+          "Others"
+        ],
+        "communicationMethods": [
+          "Phone",
+          "Email"
+        ],
+        "status": "pending",
+        "reason": "",
+        "applicantId": 5
+      }
+    ],
+
+
+
+    "retirementPlanApplicants": [
+      {
+        "userId": 2,
+        "annualIncome": 500000,
+        "plan": "2000",
+        "numberOfYears": 15,
+        "interest": "7.5%",
+        "status": "pending",
+        "reason": "",
+        "applicationId": 1
+      },
+      {
+        "userId": 3,
+        "annualIncome": 250000,
+        "plan": "1000",
+        "numberOfYears": "5",
+        "interest": "7.5%",
+        "status": "pending",
+        "reason": "",
+        "applicationId": 2
+      },
+      {
+        "userId": 1,
+        "annualIncome": 700000,
+        "plan": "5000",
+        "numberOfYears": 10,
+        "interest": "7.5%",
+        "status": "pending",
+        "reason": "",
+        "applicationId": 3
+      },
+      {
+        "userId": 5,
+        "annualIncome": 500000,
+        "plan": "2000",
+        "numberOfYears": 10,
+        "interest": "7.5%",
+        "status": "pending",
+        "reason": "",
+        "applicationId": 4
+      },
+      {
+        "userId": 4,
+        "annualIncome": 400000,
+        "plan": "1000",
+        "numberOfYears": "5",
+        "interest": "7.5%",
+        "status": "pending",
+        "reason": "",
+        "applicationId": 5
+      }
+    ]
+    
+}
+

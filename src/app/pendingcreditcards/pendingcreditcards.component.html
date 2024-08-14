@@ -1,0 +1,45 @@
+<div class="creditCard">
+    <h2 class="title">Pending Credit Cards</h2>
+    <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User id</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Mobile Number</th>
+          <th>PAN Number</th>
+          <th>Occupation</th>
+          <th>Marital Status</th>
+          <th>Charges</th>
+          <th>Income</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let applicant of creditCardApplicants | paginate: { itemsPerPage: 4, currentPage: page } ">
+          <td>{{applicant.userId}}</td>
+          <td>{{ getUserDetails(applicant.userId)?.firstname }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.lastname }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.email }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.dateofbirth }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.phonenumber }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.pan}}</td>
+          <td>{{ applicant.occupation }}</td>
+          <td>{{ applicant.maritalStatus }}</td>
+          <td>{{ applicant.charges }}</td>
+          <td>{{ applicant.income }}</td>
+          <td class="accept-rejctbtn">
+            <button class="accept-button" (click)="openConfirmationDialog('accepted', applicant)">Accept</button>
+            <button class="delete-button" (click)="openConfirmationDialog('rejected', applicant)">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
+  </div>
+  
+
+  <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>

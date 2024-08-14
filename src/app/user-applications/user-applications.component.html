@@ -1,0 +1,35 @@
+<div class="userApplications">
+    <h2 class="title">Applications</h2>
+    <div class="table-container" *ngIf="applications && applications.length > 0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>LoanType / Plan</th>
+                    <th>Status</th>
+                    <!-- <th>Reason</th> -->
+                    <th>Options</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr *ngFor="let applicant of applications | paginate: { itemsPerPage: 4, currentPage: page }">
+                    <td>{{ applicant.loanType ? applicant.loanType : 'Retirement Plan' }}</td>
+                    <td>{{ applicant.status }}</td>
+                    <td *ngIf="(applicant.loanType =='homeLoan') || (applicant.loanType == 'vehicleLoan')"  class="viewOption"><button (click)="openFormModal(applicant.userId, applicant.status)">View</button></td>
+                    <td *ngIf="!applicant.loanType" class="viewOption"><button (click)="openRetimentModal(applicant.userId, applicant.status)">View</button></td>
+                    <!-- (click)="openFormModal(application.userId, application.status)" -->
+                    <!-- <td>{{ application.reason }}</td> -->
+                </tr>
+
+            </tbody>
+        </table>
+
+        <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>
+
+    </div>
+
+        <div class="ua-null" *ngIf="applications!.length <= 0">
+            <span>You haven't applied for loans yet.</span>
+        </div>
+</div>
+

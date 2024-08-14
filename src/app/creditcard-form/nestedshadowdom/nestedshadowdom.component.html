@@ -1,0 +1,248 @@
+<form class="form" id="creditcard-container" ngNativeValidate="false" [formGroup]="creditCardForm"
+    (ngSubmit)="onSubmit()">
+    <div id="nested-ShadowRoot">
+        <div id="body-container">
+            <!-- shadow DOM content goes here -->
+
+            <!-- Userid -->
+            <!-- <div class="section" id="user-id">
+                    <label id="useridLabel" class="label-style">User id :</label>
+                    <div id="UserIdAndError">
+                        <input id="useridinput" class="input-style" placeholder="User id" type="number"(focusout)="validateUserId()">
+                        <div class="error" id="userIdError">User id is required</div>
+                    </div>
+                </div> -->
+
+            <div class="form-group" id="user-id">
+                <label id="useridLabel" class="label-style">User id </label>
+                <div id="UserIdAndError">
+                    <input id="useridinput" class="input-style" placeholder="User id" type="number"
+                        formControlName="userIdValue" (focusout)="validateUserId()" />
+                    <div class="error" id="userIdError" [hidden]="
+              !creditCardForm.get('userIdValue')?.hasError('required') ||
+              !creditCardForm.get('userIdValue')?.touched
+            ">
+                        User id is required
+                    </div>
+                    <div class="error" id="userIdInvalidError" [hidden]="
+              !creditCardForm.get('userIdValue')?.hasError('userIdInvalid') ||
+              !creditCardForm.get('userIdValue')?.touched
+            ">
+                        User not exist.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Name section -->
+            <div class="form-group" id="full-name">
+                <label id="fullnamelabel">Full name </label>
+                <div id="nameAndError">
+                    <input id="fullnameinput" placeholder="Full name" type="text" formControlName="fullname"
+                        (focusout)="validateFullName()" />
+                    <div class="error" id="fullNameError" [hidden]="
+              !creditCardForm.get('fullname')?.hasError('required') ||
+              !creditCardForm.get('fullname')?.touched
+            ">
+                        Full name is required
+                    </div>
+                    <div class="error" id="fullNameInvalidError" [hidden]="
+              !creditCardForm.get('fullname')?.hasError('fullNameInvalid') ||
+              !creditCardForm.get('fullname')?.touched
+            ">
+                        Full mame not matched with userid.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email section -->
+            <div class="form-group" id="email">
+                <label id="emaillabel">Email </label>
+                <div id="emailAndError">
+                    <input id="emailinput" placeholder="Email" type="email" formControlName="email"
+                        (focusout)="validateEmail()" />
+                    <div class="error" id="emailError" [hidden]="
+              !creditCardForm.get('email')?.hasError('required') ||
+              !creditCardForm.get('email')?.touched
+            ">
+                        Email is required
+                    </div>
+                    <div class="error" id="emailValidation" [hidden]="
+              !creditCardForm.get('email')?.hasError('email') ||
+              !creditCardForm.get('email')?.touched
+            ">
+                        Email is not valid
+                    </div>
+                    <div class="error" id="emailInvalidError" [hidden]="
+              !creditCardForm.get('email')?.hasError('emailInvalid') ||
+              !creditCardForm.get('email')?.touched
+            ">
+                        Email not matched with the userid.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone section -->
+            <div class="form-group" id="phone">
+                <label id="phonelabel">Phone</label>
+                <div id="phoneAndError">
+                    <input id="phoneinput" placeholder="Phone number" type="number" formControlName="phone"
+                        (focusout)="validatePhone()" />
+                    <div class="error" id="phoneError" [hidden]="
+              !creditCardForm.get('phone')?.hasError('required') ||
+              !creditCardForm.get('phone')?.touched
+            ">
+                        Phone number is required
+                    </div>
+                    <div class="error" id="phoneValidation" [hidden]="
+              !creditCardForm.get('phone')?.hasError('pattern') ||
+              !creditCardForm.get('phone')?.touched
+            ">
+                        Phone number is not valid
+                    </div>
+                    <div class="error" id="phoneInvalidError" [hidden]="
+                    !creditCardForm.get('phone')?.hasError('phoneInvalid') || 
+                    !creditCardForm.get('phone')?.touched
+                    ">
+                    Phone Number not matched with the userid.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date of Birth section -->
+            <div class="form-group" id="dob">
+                <label id="doblabel">Date of Birth</label>
+                <div id="dobAndError">
+                    <input id="dobinput" type="date" [max]="maxDate" formControlName="dateofbirth"
+                        (focusout)="validateDateOfBirth()" />
+                    <div class="error" id="dobError" [hidden]="
+              !creditCardForm.get('dateofbirth')?.hasError('required') ||
+              !creditCardForm.get('dateofbirth')?.touched
+            ">
+                        Date of birth is required
+                    </div>
+                    <div class="error" id="dobInvalidError" [hidden]="
+              !creditCardForm.get('dateofbirth')?.hasError('dobInvalid') ||
+              !creditCardForm.get('dateofbirth')?.touched
+            ">
+                        Date of birth not matched with the user.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gender section -->
+            <div class="form-group" id="gender">
+                <label id="genderlabel">Gender</label>
+                <select id="genderselect" formControlName="gender" (blur)="validateGender()">
+                    <option id="genop1" value="Male">Male</option>
+                    <option id="genop2" value="Female">Female</option>
+                </select>
+                <div class="error" id="genderError" [hidden]="
+            !creditCardForm.get('gender')?.hasError('genderInvalid') ||
+            !creditCardForm.get('gender')?.touched
+          ">
+                    Gender not matched with the user
+                </div>
+            </div>
+
+            <!-- Address section -->
+            <div class="form-group" id="address">
+                <label id="addresslabel">Address</label>
+                <div id="addressAndError">
+                    <textarea id="addressInput" placeholder="Address" formControlName="address"></textarea>
+                    <div class="error" id="addressError" [hidden]="
+              !creditCardForm.get('address')?.hasError('required') ||
+              !creditCardForm.get('address')?.touched
+            ">
+                        Address is required
+                    </div>
+                </div>
+            </div>
+
+            <!-- Occupation section -->
+            <div class="form-group" id="occupation">
+                <label id="occupationlabel" style="margin-top: 10px">Occupation</label>
+                <div id="occupationAndError">
+                    <input id="occupationinput" placeholder="Occupation" type="text" formControlName="occupation" />
+                    <div class="error" id="occupationError" [hidden]="
+              !creditCardForm.get('occupation')?.hasError('required') ||
+              !creditCardForm.get('occupation')?.touched
+            ">
+                        Occupation is required
+                    </div>
+                </div>
+            </div>
+
+            <!-- Income section -->
+            <div class="form-group" id="income">
+                <label id="incomelabel">Annual Income</label>
+                <div id="incomeAndError">
+                    <input id="incomeInput" placeholder="Annual Income" type="number" formControlName="income"
+                        (focusout)="validateIncome()" />
+                    <div class="error" id="incomeError" [hidden]="
+              !creditCardForm.get('income')?.hasError('required') ||
+              !creditCardForm.get('income')?.touched
+            ">
+                        Income is required
+                    </div>
+                    <div class="error" id="incomeInvalidError" [hidden]="
+              !creditCardForm.get('income')?.hasError('incomeInvalid') ||
+              !creditCardForm.get('income')?.touched
+            ">
+                        Invalid amount
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" id="maritalstatus">
+                <div id="maritalstatuslabel">Marital Status</div>
+                <div id="maritalinputs">
+                    <input id="single" value="single" type="radio" formControlName="maritalStatus"
+                        [checked]="'single' === creditCardForm.get('maritalStatus')?.value" />
+                    <label for="single">Single</label>
+                    <input id="married" value="married" type="radio" formControlName="maritalStatus" />
+                    <label for="married">Married</label>
+                    <input id="divorced" value="divorced" type="radio" formControlName="maritalStatus" />
+                    <label for="divorced">Divorced</label>
+                    <input id="widow" value="widow" type="radio" formControlName="maritalStatus" />
+                    <label for="widow">Widow</label>
+                </div>
+            </div>
+
+            <div class="form-group" id="communicationMethod">
+                <label for="communicationMethods">Communication Methods</label>
+                <select id="communicationMethods" multiple formControlName="communicationMethods">
+                  <option *ngFor="let communicationMethod of communicationMethods" [value]="communicationMethod.text">{{ communicationMethod.text }}</option>
+                </select>
+                <div *ngIf="noCommunicationMethodsSelected" class="text-danger">
+                    Please select at least one communication method.
+                  </div>
+            </div>
+
+
+            <div class="form-group" id="charges" formArrayName="charges">
+                <label id="chargeslabel">
+                    I hereby authorize the following charges to be applied to the
+                    following credit card. Check all that apply:
+                </label>
+
+                <div *ngFor="let charge of chargesArray.controls; let i = index">
+                    <input type="checkbox" [formControlName]="i" />
+                    <label>{{ chargeLabels[i] }}</label>
+                </div>
+
+                <div *ngIf="noChargeSelected" class="error">
+                    Please select at least one charge.
+                </div>
+            </div>
+
+            <!-- Submit and Cancel Buttons section -->
+            <!-- <div id="submitbtn"> -->
+            <!-- <input [disabled]="creditCardForm.invalid" id="btninput" type="button" value="Submit" > -->
+            <button [disabled]="creditCardForm.invalid" type="submit" class="btn btn-primary submit">
+                Submit
+            </button>
+            <!-- <input id="btncancelinput" type="button" value="Cancel" > -->
+            <!-- </div> -->
+        </div>
+    </div>
+</form>

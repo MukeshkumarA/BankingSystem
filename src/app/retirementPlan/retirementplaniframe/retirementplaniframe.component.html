@@ -1,0 +1,165 @@
+
+   <form id="retirementPlanForm" [formGroup]="retirementPlanForm" (ngSubmit)="onSubmit()">
+
+
+    <!-- progress bar -->
+    <div class="progressbar">
+      <div class="progress-step" data-title="Credentials" [ngClass]="{ 'active-step': isActiveStep(0) }" (click)="activeStepIndex = 0"></div>
+      <div class="progress-step" data-title="Plans" [ngClass]="{ 'active-step': isActiveStep(1) }" (click)="activeStepIndex = 1"></div>
+      <div class="progress-step" data-title="Preview" [ngClass]="{ 'active-step': isActiveStep(2) }" (click)="activeStepIndex = 2"></div>
+    </div>
+    
+
+
+    <div class="form-step" [hidden]="activeStepIndex !== 0">
+      <h2 class="heading">Credentials</h2>
+      <div class="form-group">
+        <label for="userId">User ID</label>
+        <input type="number" formControlName="userid" id="userId" (focusout)="validateUserId()">
+        <div class="error" *ngIf="retirementPlanForm.get('userid')?.hasError('required') && retirementPlanForm.get('userid')?.touched">
+          User ID is required.
+        </div>
+        <div class="error" id="userIdInvalidError" [hidden]="!retirementPlanForm.get('userid')?.hasError('userIdInvalid') || !retirementPlanForm.get('userid')?.touched">
+          User ID is invalid.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" formControlName="fullname" id="name" (focusout)="validateFullName()">
+        <div class="error" *ngIf="retirementPlanForm.get('fullname')?.hasError('required') && retirementPlanForm.get('fullname')?.touched">
+          Full Name is required.
+        </div>
+        <div class="error" id="fullNameInvalidError" [hidden]="!retirementPlanForm.get('fullname')?.hasError('fullNameInvalid') || !retirementPlanForm.get('fullname')?.touched">
+          Full mame not matched with userid.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="number">Phone Number</label>
+        <input type="tel" formControlName="phonenumber" id="number" (focusout)="validatePhone()">
+        <div class="error" *ngIf="retirementPlanForm.get('phonenumber')?.hasError('required') && retirementPlanForm.get('phonenumber')?.touched">
+          Phone Number is required.
+        </div>
+        <div class="error" id="phoneValidation" [hidden]="!retirementPlanForm.get('phonenumber')?.hasError('pattern') || !retirementPlanForm.get('phonenumber')?.touched">
+          Phone number is not valid
+       </div>
+       <div class="error" id="phoneInvalidError" [hidden]="!retirementPlanForm.get('phonenumber')?.hasError('phoneInvalid') || !retirementPlanForm.get('phonenumber')?.touched">
+        Phone Number not matched with the userid.
+      </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" id="email" (focusout)="validateEmail()">
+        <div class="error" *ngIf="retirementPlanForm.get('email')?.hasError('required') && retirementPlanForm.get('email')?.touched">
+          Email is required.
+        </div>
+        <div class="error" id="emailValidation" [hidden]="!retirementPlanForm.get('email')?.hasError('email') || !retirementPlanForm.get('email')?.touched">
+          Email is not valid
+        </div>
+        <div class="error" id="emailInvalidError" [hidden]="!retirementPlanForm.get('email')?.hasError('emailInvalid') || !retirementPlanForm.get('email')?.touched">
+          Email not matched with the userid.
+        </div>
+
+      </div>
+  
+      <div class="form-group">
+        <label for="income">Annual Income</label>
+        <input type="number" formControlName="income" id="income" (focusout)="validateIncome()">
+        <div class="error" *ngIf="retirementPlanForm.get('income')?.hasError('required') && retirementPlanForm.get('income')?.touched">
+          Annual Income is required.
+        </div>
+        <div class="error" id="incomeInvalidError" [hidden]="!retirementPlanForm.get('income')?.hasError('incomeInvalid') || !retirementPlanForm.get('income')?.touched">
+          Invalid amount
+      </div>
+      </div>
+  
+      <div class="buttons">
+        <button type="button" class="next-btn" (click)="nextStep()">Next</button>
+      </div>
+    </div>
+  
+    <div class="form-step" [hidden]="activeStepIndex !== 1">
+      <h2 class="heading">Plans</h2>
+
+      <div class="form-group checkbox">
+        <input type="checkbox" formControlName="ownplan" id="ownplan">
+        <label for="ownplan">Choose plans on your own</label>
+      </div>
+  
+      <div class="form-group" *ngIf="!retirementPlanForm.get('ownplan')?.value">
+        <label for="plans">Plans / month</label>
+        <select formControlName="plans" id="plans"(change)="updatePlan()">
+          <option value="1000">1000</option>
+          <option value="2000">2000</option>
+          <option value="5000">5000</option>
+          <option value="10000">10000</option>
+        </select>
+        <div class="error" *ngIf="retirementPlanForm.get('plans')?.hasError('required') && retirementPlanForm.get('plans')?.touched">
+          Please select a Plan.
+        </div>
+      </div>
+  
+      <div class="form-group" *ngIf="retirementPlanForm.get('ownplan')?.value">
+        <label for="otherplan">Your own Plan / per month</label>
+        <input type="number" formControlName="otherplan" id="otherplan" (input)="updateOwnAmount()">
+        <div class="error" *ngIf="retirementPlanForm.get('otherplan')?.hasError('required') && retirementPlanForm.get('otherplan')?.touched">
+            Please select a plan amount.
+          </div>
+      </div>
+  
+      <div class="form-group yearsselection">
+        <div class="inputs">
+          <label for="years">Years</label>
+          <input type="number" formControlName="years" id="years" (input)="updateYear()">
+        </div>
+        <div class="incrementanddecrementoptions">
+          <button type="button" (click)="decreaseYears();updateYear()">-</button>
+          <button type="button" (click)="increaseYears();updateYear()">+</button>
+        </div>
+        <div class="error" *ngIf="retirementPlanForm.get('years')?.hasError('required') && retirementPlanForm.get('years')?.touched">
+          Years is required.
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="interest">Interest</label>
+        <input type="text" formControlName="interest" id="interest" readonly>
+      </div>
+  
+      <div class="buttons">
+        <button type="button" class="prev-btn" (click)="prevStep()">Previous</button>
+        <button type="button" class="next-btn" (click)="nextStep()">Next</button>
+      </div>
+    </div>
+  
+    <div class="form-step" [hidden]="activeStepIndex !== 2" >
+      <h2 class="heading">Preview</h2>
+  
+      <div class="preview">
+        <div class="form-group">
+          <label for="choosenamount">Amount/Plan</label>
+          <input type="number" id="choosenamount" [value]="amount" readonly>
+        </div>
+  
+        <div class="form-group">
+          <label for="choosenyears">Years</label>
+          <input type="number" id="choosenyears" [value]="numberOfYears" readonly>
+        </div>
+  
+        <div class="form-group">
+          <label for="interestrate">Interest rate</label>
+          <input type="text" id="interestrate" value="{{interestRate}}%" readonly>
+        </div>
+      </div>
+ 
+      <div class="buttons">
+        <button type="button" class="prev-btn" (click)="prevStep()">Previous</button>
+        <button type="submit" class="submit-btn" [disabled]="retirementPlanForm.invalid">Submit</button>
+      </div>
+    </div>
+  
+  </form>
+  
+  

@@ -1,0 +1,29 @@
+<div class="enquitylist">
+    <h2 class="title">Enquiry List</h2>
+    <div class="table-container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Serial No</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Desctiption</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr *ngFor="let enquiry of enquiries | paginate: { itemsPerPage: 4, currentPage: page } ; let i = index">
+                <td>{{(page - 1) * 4 + i + 1}}</td>
+                <td>{{ enquiry.name }}</td>
+                <td>{{ enquiry.email }}</td>
+                <td>{{ enquiry.description }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+  
+<pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>

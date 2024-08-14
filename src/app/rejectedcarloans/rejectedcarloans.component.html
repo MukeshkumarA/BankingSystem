@@ -1,0 +1,51 @@
+
+<!-- vehicle loan datas.... -->
+<div class="rejectedvehicleloan">
+    <h2 class="title">Rejected Vehicle Loans</h2>
+    <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User id</th>
+          <!-- <th>Applicant id</th> -->
+          <th>First name</th>
+          <!-- <th>Middle name</th> -->
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Mobile Number</th>
+          <th>PAN Number</th>
+          <th>Occupation</th>
+          <!-- <th>Loan Type</th> -->
+          <!-- <th>Eligible or Not</th> -->
+          <!-- <th>Options</th> -->
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let applicant of loanApplicants  | paginate: { itemsPerPage: 4, currentPage: page }">
+          <td>{{applicant.userId}}</td>
+          <!-- <td>{{applicant.applicantId}}</td> -->
+          <!-- <td>{{ applicant.firstName }}</td>
+          <td>{{ applicant.middleName }}</td>
+          <td>{{ applicant.lastName }}</td>
+          <td>{{ applicant.email }}</td>
+          <td>{{ applicant.dateOfBirth }}</td> -->
+          <td>{{ getUserDetails(applicant.userId)?.firstname }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.lastname }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.email }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.dateofbirth }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.phonenumber }}</td>
+          <td>{{ applicant.panNumber }}</td>
+          <td>{{ applicant.occupation }}</td>        
+          <td>{{ applicant.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+
+  <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>
+  
+  
+  

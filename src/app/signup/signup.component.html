@@ -1,0 +1,256 @@
+
+<div class="modal-container">
+<div class="header">
+    <h2 class="heading">Account Creation</h2>
+    <fa-icon (click)="closeModal()" [icon]="faXmark" class="close-icon"></fa-icon>
+  </div>
+  
+<div class="modal-content">
+<form id="registrationForm" (ngSubmit)="submit()">
+
+    <div class="form-horizontal">     
+      <!-- Other form elements... -->
+      <div class="form">
+  
+          <div class="form-group">
+            <label for="Firstname" class="control-label col-md-2">First name</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="firstname" [(ngModel)]="user.firstname" name="firstname" placeholder="First name" (focusout)="validateFirstname()"/>
+              <span class="text-danger"></span>
+            </div>
+            <div class="error firstnameerror"></div>
+          </div>
+  
+          <div class="form-group">
+            <label for="Lastname" class="control-label col-md-2">Last name</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="lastname" [(ngModel)]="user.lastname" name="lastname" placeholder="Last name" (focusout)="validateLastname()"/>
+              <span class="text-danger"></span>
+            </div>
+            <div class="error lastnameerror"></div>
+          </div>
+
+  
+
+          <div class="form-group">
+            <label class="control-label col-md-2">Father name</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="fathername" [(ngModel)]="user.fathername" name="fathername" placeholder="Father name" (focusout)="validateFathername()"/>
+              <span class="text-danger"></span>
+            </div>
+            <div class="error fathernameerror"></div>
+          </div>
+  
+          <div class="form-group dateofbirth">
+            <label for="Dateofbirth" class="control-label col-md-2">Date of birth</label>
+            <div class="col-md-10 dob">
+              <input type="date" class="form-control" id="dateofbirth" [(ngModel)]="user.dateofbirth" name="dateofbirth" [max]="maxDate" (focusout)="validateDateOfBirth()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error dateofbirtherror"></div>
+          </div>
+
+          <!-- <div class="form-group">
+            <mat-form-field>
+              
+              <mat-label>Date of birth</mat-label>
+              <input matInput [matDatepicker]="picker" [(ngModel  )] [max]="maxDate" (focusout)="validateDateOfBirth()">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <div class="error dateofbirtherror"></div>
+          </div> -->
+
+  
+          <div class="form-group gender">
+            <label class="control-label col-md-2">Gender</label>
+            <div class="gender-radio">
+              <input type="radio" name="gender" id="male" value="Male" checked    [(ngModel)]="user.gender"  (focusout)="validateGender()" />
+              <label for="gender-male">Male</label>
+              <input  type="radio" name="gender" id="female" value="Female"   [(ngModel)]="user.gender"  (focusout)="validateGender()" />
+              <label for="female">Female</label>
+              <input  type="radio" name="gender" id="others" value="Others" [(ngModel)]="user.gender"  (focusout)="validateGender()" />
+              <label for="others">Others</label>
+              <span class="text-danger" ></span>
+            </div>
+            <div class="error genderError"></div>
+          </div>
+
+          <!-- <div class="form-group gender">
+            <label class="control-label col-md-2">Gender</label><br>
+            <mat-radio-group aria-label="Gender">
+              <mat-radio-button value="1" [checked]="true" [(ngModel)]="user.gender">Male</mat-radio-button>
+              <mat-radio-button value="2" [(ngModel)]="user.gender">Female</mat-radio-button>
+              <mat-radio-button value="3" [(ngModel)]="user.gender">Others</mat-radio-button>
+            </mat-radio-group>
+            <div class="error gendererror"></div>
+          </div> -->
+
+  
+          <div class="form-group phonenumber">
+            <label for="Phonenumber" class="control-label col-md-2">Phone number</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="phone" name="phonenumber" placeholder="Phone number"  [(ngModel)]="user.phonenumber"  (focusout)="validatePhoneNumber()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error phonenumbererror"></div>
+          </div>
+  
+
+          <div class="form-group">
+            <label  for="Aadharnumber" class="control-label col-md-2">Aadhar number</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="aadhar" name="aadhar" placeholder="Aadhar number" [(ngModel)]="user.aadhar"  (focusout)="validateAadharNumber()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error aadharnumbererror"></div>
+          </div>
+  
+          <div class="form-group">
+            <label for="Email" class="control-label col-md-2">Email</label>
+            <div class="col-md-10">
+              <input  type="text" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="user.email"  (focusout)="validateEmail()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error emailerror"></div>
+          </div>
+  
+
+          <div class="form-group">
+            <label for="Pannumber" class="control-label col-md-2">Pan</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="pannumber" name="pannumber" placeholder="Pannumber" [(ngModel)]="user.pan" (focusout)="validatePan()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error panerror"></div>
+          </div>
+
+
+        
+  
+          <div class="form-group">
+            <label for="Address" class="control-label col-md-2">Address</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="address" name="address" placeholder="Address" [(ngModel)]="user.address"  (focusout)="validateAddress()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error addresserror"></div>
+          </div>
+  
+          <div class="form-group">
+            <label for="State" class="control-label col-md-2">State</label>
+            <div class="col-md-10">
+              <!-- <select class="form-control state" id="statedropdown" name="state" (change)="selectCity($event)" [(ngModel)]="user.state"  (focusout)="validateState()" >
+                <option value="">Select state</option>
+                <!-- Add options here 
+                <option *ngFor="let state of states" value="{{state.stateId}}" >{{state.stateName}}</option>
+              </select> -->
+              <select class="form-control state" id="statedropdown" name="state" (change)="selectCity($event)" [(ngModel)]="user.state"  (focusout)="validateState()" >
+                <option value="">Select state</option>
+                <option *ngFor="let state of states" [value]="state.stateId">{{state.stateName}}</option>
+              </select>
+            </div>
+            <div class="error stateerror"></div>
+          </div>
+
+  
+
+          <div class="form-group">
+            <label for="City" class="control-label col-md-2">City</label>
+            <div class="col-md-10">
+              <!-- <select class="form-control" id="city" name="city" (change)="selectBranch($event)" [(ngModel)]="user.city"  (focusout)="validateCity()" >
+                <option value="">Select a city</option>
+                <!-- Add options here 
+                <option *ngFor="let city of cities" value="{{city.cityId}}">{{city.cityName}}</option>
+              </select> -->
+              <select class="form-control" id="city" name="city" (change)="selectBranch($event)" [(ngModel)]="user.city" (focusout)="validateCity()">
+                <option value="">Select a city</option>
+                <option *ngFor="let city of cities" [value]="city.cityId">{{city.cityName}}</option>
+              </select>
+            </div>
+            <div class="error cityerror"></div>
+          </div>
+  
+          <div class="form-group">
+            <label for="Branch" class="control-label col-md-2">Branch</label>
+            <div class="col-md-10">
+              <select class="form-control" id="branch" name="branch" [(ngModel)]="user.branch"  (focusout)="validateBranch()" >
+                <option value="">Select branch</option>
+                <!-- Add options here -->
+                <option *ngFor="let branch of branches">{{ branch.branchName }}</option>
+              </select>
+            </div>
+            <div class="error brancherror"></div>
+          </div>
+
+  
+
+          <div class="form-group">
+            <label for="Pincode" class="control-label col-md-2">Pincode</label>
+            <div class="col-md-10">
+              <input  type="text" class="form-control" id="pincode" name="pincode" placeholder="Pincode" [(ngModel)]="user.pincode"  (focusout)="validatePincode()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error pincodeerror"></div>
+          </div>
+  
+          <div class="form-group">
+            <label for="Username" class="control-label col-md-2">Username</label>
+            <div class="col-md-10">
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username" [(ngModel)]="user.username"  (focusout)="validateUsername()" />
+              <span class="text-danger"></span>
+            </div>
+            <div class="error usernameerror"></div>
+          </div>
+
+  
+
+          <div class="form-group password-instruction">
+            <label for="Password" class="control-label col-md-2">Password</label>
+            <div class="col-md-10">
+              <input  type="password" class="form-control" id="password" name="password" placeholder="Password" [(ngModel)]="user.password" (focusout)="validatePassword()"/>
+              <span class="text-danger"></span>
+            </div>
+            <div class="error passworderror"></div>
+            <div class="box">
+              Must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one special character, and one number.
+            </div>
+            
+          </div>
+  
+          <div class="form-group">
+            <label for="Confirmpassword" class="control-label col-md-2">Confirm password</label>
+            <div class="col-md-10">
+              <input  type="password" class="form-control" id="passwordcheck" name="passwordcheck" placeholder="Confirm password" (focusout)="validateConfirmPassword()"/>
+              <!-- You can add validation logic for password confirmation if needed -->
+            </div>
+            <div class="error confirmpassworderror"></div>
+          </div>
+          
+        </div>
+
+  
+      <!-- <div class="form-group create-btn">
+        <div class="col-md-offset-2 col-md-10">
+          <input type="submit" value="Create" class="btn btn-default" id="submit-button"/>
+        </div>
+      </div>
+   -->
+      <!-- <div class="already-user">
+        Already a user?
+      </div> -->
+  
+    </div>
+  </form>
+
+  </div>
+  
+  <div class="footer">
+    <button type="button" class="btn btn-primary" id="submit-button" (click)="submit()">Create</button>
+  </div>
+</div>
+  
+  
+  
+  

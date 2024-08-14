@@ -1,0 +1,200 @@
+
+<form class="form" id="debitcard-container" ngNativeValidate="false" [formGroup]="debitCardForm" (ngSubmit)="onSubmit()">
+    <div id="nested-ShadowRoot">
+        <div id="body-container">
+            <!-- shadow DOM content goes here -->
+
+            <!-- Userid -->
+                <!-- <div class="section" id="user-id">
+                    <label id="useridLabel" class="label-style">User id :</label>
+                    <div id="UserIdAndError">
+                        <input id="useridinput" class="input-style" placeholder="User id" type="number"(focusout)="validateUserId()">
+                        <div class="error" id="userIdError">User id is required</div>
+                    </div>
+                </div> -->
+
+                <div class="form-group" id="user-id">
+                    <label id="useridLabel" class="label-style">User id </label>
+                    <div id="UserIdAndError">
+                      <input id="useridinput" class="input-style" placeholder="User id" type="number"
+                             formControlName="userIdValue" (focusout)="validateUserId()">
+                      <div class="error" id="userIdError" [hidden]="!debitCardForm.get('userIdValue')?.hasError('required') || !debitCardForm.get('userIdValue')?.touched">User id is required</div>
+                      <div class="error" id="userIdInvalidError" [hidden]="!debitCardForm.get('userIdValue')?.hasError('userIdInvalid') || !debitCardForm.get('userIdValue')?.touched">
+                        User not exist.
+                      </div>
+                    </div>
+                  </div>
+                
+
+            <!-- Full Name section -->
+            <div class="form-group" id="full-name">
+                <label id="fullnamelabel">Full name  </label>
+                <div id="nameAndError">
+                    <input id="fullnameinput" placeholder="Full name" type="text"
+                    formControlName="fullname" (focusout)="validateFullName()">
+                    <div class="error" id="fullNameError" [hidden]="!debitCardForm.get('fullname')?.hasError('required') || !debitCardForm.get('fullname')?.touched">Full name is required</div>
+                    <div class="error" id="fullNameInvalidError" [hidden]="!debitCardForm.get('fullname')?.hasError('fullNameInvalid') || !debitCardForm.get('fullname')?.touched">
+                        Full mame not matched with userid.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email section -->
+            <div class="form-group" id="email" >
+                <label id="emaillabel">Email </label>
+                <div id="emailAndError">
+                    <input id="emailinput" placeholder="Email" type="email"
+                    formControlName="email" (focusout)="validateEmail()">
+                    <div class="error" id="emailError" [hidden]="!debitCardForm.get('email')?.hasError('required') || !debitCardForm.get('email')?.touched">Email is required</div>
+                    <div class="error" id="emailValidation" [hidden]="!debitCardForm.get('email')?.hasError('email') || !debitCardForm.get('email')?.touched">
+                    Email is not valid
+                    </div>
+                    <div class="error" id="emailInvalidError" [hidden]="!debitCardForm.get('email')?.hasError('emailInvalid') || !debitCardForm.get('email')?.touched">
+                        Email not matched with the userid.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone section -->
+            <div class="form-group" id="phone">
+                <label id="phonelabel">Phone</label>
+                <div id="phoneAndError">
+                    <input id="phoneinput" placeholder="Phone number" type="number"
+                    formControlName="phone" (focusout)="validatePhone()">
+                    <div class="error" id="phoneError" [hidden]="!debitCardForm.get('phone')?.hasError('required') || !debitCardForm.get('phone')?.touched">Phone number is required</div>
+                    <div class="error" id="phoneValidation" [hidden]="!debitCardForm.get('phone')?.hasError('pattern') || !debitCardForm.get('phone')?.touched">
+                        Phone number is not valid
+                    </div>
+                    <div class="error" id="phoneInvalidError" [hidden]="!debitCardForm.get('phone')?.hasError('phoneInvalid') || !debitCardForm.get('phone')?.touched">
+                        Phone Number not matched with the userid.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date of Birth section -->
+            <div class="form-group" id="dob" >
+                <label id="doblabel">Date of Birth</label>
+                <div id="dobAndError">
+                    <input id="dobinput" type="date" [max]="maxDate" formControlName="dateofbirth" (focusout)="validateDateOfBirth()">
+                    <div class="error" id="dobError" [hidden]="!debitCardForm.get('dateofbirth')?.hasError('required') || !debitCardForm.get('dateofbirth')?.touched">Date of birth is required</div>
+                    <div class="error" id="dobInvalidError" [hidden]="!debitCardForm.get('dateofbirth')?.hasError('dobInvalid') || !debitCardForm.get('dateofbirth')?.touched">
+                        Date of birth not matched with the user.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gender section -->
+            <div class="form-group" id="gender">
+                <label id="genderlabel">Gender</label>
+                <select id="genderselect"formControlName="gender" (blur)="validateGender()">
+                    <option id="genop1" value="Male" >Male</option>
+                    <option id="genop2" value="Female" >Female</option>
+                </select>
+                <div class="error" id="genderError" [hidden]="!debitCardForm.get('gender')?.hasError('genderInvalid') || !debitCardForm.get('gender')?.touched">
+                    Gender not matched with the user
+                </div>
+            </div>
+
+            <!-- Address section -->
+            <div class="form-group" id="address">
+                <label id="addresslabel">Address</label>
+                <div id="addressAndError">
+                    <textarea id="addressInput" placeholder="Address" formControlName="address"></textarea>
+                    <div class="error" id="addressError" [hidden]="!debitCardForm.get('address')?.hasError('required') || !debitCardForm.get('address')?.touched">Address is required</div>
+                </div>
+            </div>
+
+            <!-- Occupation section -->
+            <div class="form-group" id="occupation">
+                <label id="occupationlabel" style="margin-top: 10px;">Occupation</label>
+                <div id="occupationAndError">
+                    <input id="occupationinput" placeholder="Occupation" type="text"
+                    formControlName="occupation">
+                    <div class="error" id="occupationError" [hidden]="!debitCardForm.get('occupation')?.hasError('required') || !debitCardForm.get('occupation')?.touched">Occupation is required</div>
+                </div>
+            </div>
+
+            <!-- Income section -->
+            <div class="form-group" id="income">
+                <label id="incomelabel">Annual Income</label>
+                <div id="incomeAndError">
+                    <input id="incomeInput" placeholder="Annual Income" type="number"
+                    formControlName="income" (focusout)="validateIncome()">
+                    <div class="error" id="incomeError" [hidden]="!debitCardForm.get('income')?.hasError('required') || !debitCardForm.get('income')?.touched">Income is required</div>
+                        <!-- Income is required</div> 
+                        <!-- {{ creditCardForm.get('income')?.hasError('incomeInvalid') ? 'Invalid amount' : 'Income is required' }}</div> -->
+                    <!-- <div class="error" id="incomeGreaterThanZeroError" [hidden]="!creditCardForm.get('income')?.hasError('incomeGreaterThanZero') || !creditCardForm.get('income')?.touched">Income must be greater than 0</div> -->
+                    <div class="error" id="incomeInvalidError" [hidden]="!debitCardForm.get('income')?.hasError('incomeInvalid') || !debitCardForm.get('income')?.touched">
+                        Invalid amount
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group maritalStatus" id="maritalstatus">
+                <div id="maritalstatuslabel">Marital Status</div>
+                <div id="maritalinputs">
+                  <input id="single" value="single" type="radio" formControlName="maritalStatus" [checked]="'single' === debitCardForm.get('maritalStatus')?.value">
+                  <label for="single">Single</label>
+                  <input id="married" value="married" type="radio" formControlName="maritalStatus">
+                  <label for="married">Married</label>
+                  <input id="divorced" value="divorced" type="radio" formControlName="maritalStatus">
+                  <label for="divorced">Divorced</label>
+                  <input id="widow" value="widow" type="radio" formControlName="maritalStatus">
+                  <label for="widow">Widow</label>
+                </div>
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="cardTypes">Credit card types</label>
+                <select id="cardTypes" multiple formControlName="cardTypes">
+                  <option *ngFor="let cardType of cardTypesData" [value]="cardType.text">{{ cardType.text }}</option>
+                </select>
+                <div *ngIf="noCardTypesSelected" class="text-danger">
+                    Please select at least one credit card type.
+                  </div>
+              </div> -->
+
+              <div class="form-group" id="communicationMethod">
+                <label for="communicationMethods">Communication Methods</label>
+                <select id="communicationMethods" multiple formControlName="communicationMethods">
+                  <option *ngFor="let communicationMethod of communicationMethods" [value]="communicationMethod.text">{{ communicationMethod.text }}</option>
+                </select>
+                <div *ngIf="noCommunicationMethodsSelected" class="text-danger">
+                    Please select at least one communication method.
+                  </div>
+            </div>
+
+
+
+            <div class="form-group" id="charges" formArrayName="charges">
+                <label id="chargeslabel">
+                    I hereby authorize the following charges to be applied to the following credit card. Check all that apply:
+                </label>
+                
+                <div class="chargesdiv" *ngFor="let charge of chargesArray.controls; let i = index">
+                    <input type="checkbox" [formControlName]="i">
+                    <label>{{ chargeLabels[i] }}</label>
+                </div>
+
+                <div *ngIf="noChargeSelected" class="error">
+                    Please select at least one charge.
+                </div>
+            </div>
+
+            <!-- <div class="form-group" id="panSubmission">
+                <label>Submit your pan</label>
+                <input type="file" (change)="onFileSelected($event)" #fileInput>
+            </div> -->
+            
+
+            <!-- Submit and Cancel Buttons section -->
+            <!-- <div id="submitbtn"> -->
+                <!-- <input [disabled]="creditCardForm.invalid" id="btninput" type="button" value="Submit" > -->
+                <button  [disabled]="debitCardForm.invalid"  type="submit" class="btn btn-primary submit">Submit</button>
+                <!-- <input id="btncancelinput" type="button" value="Cancel" > -->
+            <!-- </div> -->
+
+        </div>
+    </div>
+</form>

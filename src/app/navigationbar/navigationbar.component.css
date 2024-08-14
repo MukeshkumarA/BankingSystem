@@ -1,0 +1,563 @@
+*{  
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+    color: white;
+}
+
+
+.navigationbar{
+    height: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #62a4a6; */
+    background-color: cornflowerblue;
+    padding-right:30px;
+
+}
+
+#title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+.headline{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color:white;
+    margin-left: 4rem;
+    text-decoration: none;
+}
+
+#logo{
+    font-size: 4rem;
+    margin-right: 10px;
+    text-decoration: none;
+    color: white;
+}
+
+
+#navlist{
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+}
+
+#navlist .userIdentity, #navlist .adminidentity{
+    margin-right: -2%;
+}
+
+#navlist li{
+    text-align: center;
+    height: 100%;
+    width: 180px;
+}
+
+#navlist li a{
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    font-size: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: min-content;
+    width: 180px;
+    top: 3.4rem;
+    /* background-color: #62687c; */
+    background-color: navy;
+    border: none;
+    /* border-radius: 5px; */
+}
+
+.dropdown li{
+    width: 100%;
+    height: 70px;
+    padding: 0.6rem;
+    margin-top: 0.2rem;
+    list-style-type: none;
+    /* border-top: 0.09rem solid rgba(0, 0, 0, 0.2);
+    border-bottom: 0.09rem solid rgba(0, 0, 0, 0.2); */
+    z-index: 999;
+}
+
+
+.expand_list{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+
+/* :: downwards dropOut :: */
+.expand_list_downwards{
+    position: relative;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    border: none;
+    z-index: 9999;
+    /* border-radius: 5px; */
+}
+
+#payment_box{
+    cursor:pointer;
+}
+.downwardsDrop{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: min-content;
+    width: 180px;
+    top: 80%;
+    left: 1.5rem;
+    list-style: none;
+    /* background-color: #62687c; */
+    background-color: navy;
+    border: none;
+    /* border-radius: 5px; */
+}
+
+
+/*:: sidewards dropDown :: */
+.sidewardsDrop li{
+    width: 100%;
+    height: 70px;
+    padding: 0.6rem;
+    margin-top: 0;
+    /* border-top: 0.09rem solid rgba(0, 0, 0, 0.2); */
+    /* border-bottom: 0.09rem solid rgba(0, 0, 0, 0.2); */
+    list-style-type: none;
+} 
+.expand_list_sidewards{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    
+}
+
+
+.sidewardsDrop{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    height: min-content;
+    width: 180px;
+    left: 170px;
+    top: 4.5rem;
+    /* background-color: #62687c; */
+    background-color: navy;
+    border: none;
+    /* border-radius: 5px; */
+}
+
+.sidewardsDrop li{
+    width: 100%;
+    height: 70px;
+    padding: 0.6rem;
+    margin-top: 0.2rem;
+
+} 
+
+
+.navigationbar input[type="checkbox"]{
+    display: none;
+}
+
+
+/* :: toggle button :: */
+.menue_bar{
+    position: absolute;
+    width: 3rem;
+    height: 2rem;
+    top: 2rem;
+    right: 2rem;
+    display: none;
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bar{
+    width: 100%;
+    height: 0.35rem;
+    border-radius: 4rem;
+    background: white;
+    transition: 0.5s; 
+    transform-origin: center; 
+}
+
+#navlist li:not(#image):hover {
+    /* Apply hover styles to all list items except li#image */
+    background-color: royalblue;
+}
+
+#navlist li:not(#image) a:hover {
+    /* Apply hover styles to links within list items except li#image */
+    color: white!important;
+}
+
+.expand_list:hover .dropdown{
+    display: flex;
+}
+
+.expand_list_downwards:hover .downwardsDrop{
+    display: flex;
+} 
+
+.expand_list_sidewards:hover .sidewardsDrop{
+    display: flex;
+} 
+
+/* 
+
+/* :: media queries :: 
+@media (max-width: 1500px){
+
+    body{
+        width: 100%;
+    }
+    #navlist{
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 1250px){
+
+    body{
+        width: 100%;
+        display: block;
+    }
+
+    .headline{
+        justify-content: flex-start;
+        margin: 0 0.5rem 0 1rem;
+    } 
+
+    #title{
+        align-self: center;
+    } 
+
+    #logo{
+        font-size: 4rem;
+        /* top | left | right | bottom 
+        margin: 0rem 0.5rem 0 0;
+    }
+
+    .menue_bar{
+        display: flex;
+    }
+
+    .navigationbar{
+        display: block;
+    }
+
+    #navlist{
+        position: absolute;
+        display: none;
+        width: 100%;
+        height: min-content;
+        top: 8rem;
+        background-color: #62a4a6;
+    }
+    
+ 
+    #navlist li{
+        display: block;
+        height: min-content;
+        width: 100%;
+    }
+
+    #navlist a{
+        display: block;
+        padding: 1rem 0;
+    }
+
+
+    .expand_list, .expand_list_downwards, 
+    .expand_list_sidewards{
+        display: block;
+    }
+
+    .expand_list label, .expand_list_downwards label,
+    .expand_list_sidewards label{
+        display: block;
+        cursor: pointer;
+        padding: 1rem 0;
+    }
+
+    .expand_list:hover .dropdown{
+        display: none;
+    }
+    .expand_list_downwards:hover .downwardsDrop{
+        display: none;
+    }
+    .expand_list_sidewards:hover .downwardsDrop{
+        display: none;
+    }
+
+    .expand_list 
+    input[type="checkbox"]:checked ~ .dropdown{
+        display: block;
+    }
+    .expand_list_downwards 
+    input[type="checkbox"]:checked ~ .downwardsDrop{
+        display: block;
+    }
+    .expand_list_sidewards 
+    input[type="checkbox"]:checked ~ .downwardsDrop{
+        display: block;
+    }
+
+
+    .dropdown, .downwardsDrop, .sidewardsDrop{
+        position: static;
+        width: 100%;
+        background-color: #62687c;
+    }
+    .dropdown li, .downwardsDrop li, 
+    .sidewardsDrop li{
+        position: static;
+        display: block;
+    }
+
+    .dropdown li a, .downwardsDrop li a,
+    .sidewardsDrop li a{
+        width: 100%;
+        padding: 0;
+        justify-content: center;
+    }
+    .dropdown a:hover{
+        transform: scale(1.2);
+        transition: 0.3s;
+    }
+    .downwardsDrop a:hover{
+        transform: scale(1.2);
+        transition: 0.3s;
+    }
+    .sidewardsDrop a:hover{
+        transform: scale(1.2);
+        transition: 0.3s;
+    }
+
+
+    /* :: toggle animation :: 
+    #toggle_button:checked ~ul{
+        display: block;
+    }
+
+    #toggle_button:checked + .menue_bar .bar:nth-child(1){
+        transform: translateY(12px) rotate(-45deg);
+    }
+     
+    #toggle_button:checked + .menue_bar .bar:nth-child(2){
+        opacity:0;
+    }
+     
+    #toggle_button:checked + .menue_bar .bar:nth-child(3){
+        transform: translateY(-12px) rotate(45deg);
+    }
+
+}
+
+@media (max-width: 300px){
+
+    body{
+        width: 100%;
+    }
+
+    #navlist{
+        width: 100%;
+    }
+
+    .headline{
+        justify-content: flex-start;
+        margin: 0 0.5rem 0 1rem;
+    } 
+
+    #title{
+        align-self: center;
+        font-size: 1.4rem;
+    } 
+
+    #logo{
+        font-size: 2rem;
+        margin: 0rem 0.5rem 0 0;
+    }
+
+    .dropdown a:hover{
+        transform: scale(1);
+        background-color: green;
+        transition: 0.3s;
+    }
+    .downwardsDrop a:hover{
+        transform: scale(1);
+        background-color: green;
+        transition: 0.3s;
+    }
+    .sidewardsDrop a:hover{
+        transform: scale(1);
+        background-color: green;
+        transition: 0.3s;
+    }
+
+    .menue_bar{
+        display: flex;
+        width: 15%;
+    }
+
+} */
+
+
+#navlist li img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+#navlist li #image:hover{
+    background-color: none!important;
+}
+
+#image{
+    cursor: pointer;
+}
+
+.adminprofile{
+    display: block;
+    width: 300px;
+    height: 300px;
+    /* background-color: rgb(236, 205, 205); */
+    background-color: cornflowerblue;
+    border-radius: 15px;
+    margin-top: 10px;
+    z-index: 999;
+    position: absolute;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2%;
+    color: white;
+}
+
+
+
+.adminprofile img{
+    width: 120px;
+    border-radius: 50%;
+}
+
+.adminprofile .welcome{
+    font-size: 22px;
+    /* font-weight: bold; */
+}
+
+.adminprofile .logout button{
+
+    width: 150px;
+    font-size: 18px;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.close-icon{
+    font-size: 18px;
+    color: black;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+/* CSS for round background */
+.userdetails span {
+    display: inline-block; /* Make it a block element to allow width and height properties */
+    width: 40px;
+    height: 40px; /* Set height equal to width for a perfect circle */
+    background-color: black;
+    color: white; /* Text color */
+    /* padding: 5px 10px; */
+    border: none;
+    border-radius: 50%; /* Set border-radius to 50% for a perfect circle */
+    text-align: center; /* Center the text horizontally and vertically */
+    line-height: 50px; /* Center the text vertically */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .usernavigation .userIdentity a:hover{
+     /* font-size: 80px!important; */
+     background-color: cornflowerblue;
+     color: inherit;
+     cursor: pointer;
+   }
+  
+
+   .userprofile{
+    display: block;
+    width: 300px;
+    height: 300px;
+    /* background-color: rgb(236, 205, 205); */
+    background-color: cornflowerblue;
+    color: white;
+    border-radius: 15px;
+    margin-top: 10px;
+    z-index: 999;
+    position: absolute;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2%;
+    }
+
+
+
+.userprofile .welcome{
+    font-size: 22px;
+    /* font-weight: bold; */
+}
+
+.userInfo{
+    font-size: 18px;
+}
+
+
+.userprofile .logout button{
+    width: 150px;
+    font-size: 18px;
+    color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.active {
+    background-color: #007bff;
+    /* color: #fff; */
+  }

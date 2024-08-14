@@ -1,0 +1,39 @@
+<div class="acceptedRetirementPlan">
+    <h2 class="title">Accepted Retirement Plans</h2>
+    <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User id</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <!-- <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Mobile Number</th> -->
+          <th>Annula Income</th>
+          <th>Plan</th>
+          <th>Number of Years</th>
+          <th>Interest Rate</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let applicant of retirementPlanApplicants | paginate:{itemsPerPage: 4, currentPage: page}">
+          <td>{{applicant.userId}}</td>
+          <td>{{ getUserDetails(applicant.userId)?.firstname }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.lastname }}</td>
+          <!-- <td>{{ getUserDetails(applicant.userId)?.email }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.dateofbirth }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.phonenumber }}</td> -->
+          <td>{{ applicant.annualIncome }}</td>
+          <td>{{ applicant.plan }}</td>
+          <td>{{ applicant.numberOfYears }}</td>
+          <td>{{ applicant.interest }}</td>
+          <td>{{ applicant.status }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+  
+  <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>

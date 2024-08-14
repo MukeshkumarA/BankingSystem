@@ -1,0 +1,36 @@
+
+<body>
+
+    <section id="services" #servicesSection>
+
+        <div class="serviceshead">
+          <h2 class="section-heading">Services</h2>
+          <!--<button class="addservice">Add service</button>-->
+          <!--<fa-icon [icon]="faPlusCircle" class="addservice"></fa-icon>-->
+          <div class="line"></div>
+          <p>
+            We provide best banking services to our custromer. We use the secure powerful server for safe online banking
+            we provide fastest and secure bank transaction service.
+          </p>
+        </div>
+      
+      
+        <div class="container-fluid service-grid">
+            <div class="row services-cards justify-content-between">
+              <div class="col-md-6 col-lg-3 card" *ngFor="let service of services" (click)="callOtherComponents(service)" > <!---->
+                <div class="service">
+                  <img [src]="service.icon" />
+                  <h4>{{ service.title }}</h4>
+                  <p>{{ service.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      
+      </section>
+      
+    
+</body>
+
+
+  

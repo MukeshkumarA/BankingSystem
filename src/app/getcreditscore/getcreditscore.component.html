@@ -1,0 +1,22 @@
+<section>
+    <div class="heading">
+        Get your cibil score here!
+    </div>
+
+    <div>
+        <form method="post" (ngSubmit)="getCibilScore()">
+            <label for="pan">PAN Card Number:</label>
+            <div class="input">
+                <input type="text" id="pannumber" name="pan" required (focusout) = validatePan()>
+                <span class="error panerror"></span>
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="cibilresult">
+        <h1>Your cibil score is <span>{{cibilscore}}</span></h1>
+    </div>
+
+</section>

@@ -1,0 +1,157 @@
+
+#retirementPlanForm{
+    width: 500px;
+    /* box-shadow: 10px 10px  10px rgba(0, 0, 0, 0.5); */
+    box-shadow: 0 2px 10px rgba(0, 0, 0.1);
+    margin: 10px auto;
+    /* border: 1px solid black; */
+    padding: 2% 5%;
+    border-radius: 10px;
+    height: min-content;
+}
+
+.progressbar{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0 2rem 0;
+    counter-reset: step;
+}
+
+.progressbar::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: #dcdcdc;
+}
+
+.progress-step{
+    width: 55px;
+    height: 55px;
+    background-color: #dcdcdc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-weight: bold; */
+    cursor: pointer;
+    z-index: 99;
+}
+
+.progress-step::before {
+    counter-increment: step;
+    content: counter(step);
+  }
+  
+  /* active progress step */
+  .active-step {
+    background-color: #007bff; /* Change this to your desired background color */
+    color: white; /* Change text color for better visibility */
+  }
+
+  .active-bar {
+    width: 10%;
+    height: 3px; /* Adjust the height as needed */
+    background-color: #007bff; /* Match the active step background color */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+
+.heading{
+    text-align: center;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+}
+
+input[type="text"], input[type="number"], 
+input[type="email"], input[type="tel"], select {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.checkbox{
+    display: flex;
+    flex-direction: row;
+}
+
+.checkbox label{
+    margin-left: 10px;
+}
+
+
+.buttons{
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons button, .preview-btn button{
+    width: 150px;
+    font-size: 20px;
+    padding: 10px 5px;
+    background-color: cornflowerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.error{
+    color: red;
+    font-size: 15px;
+}
+
+.preview-btn{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.yearsselection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.yearsselection .inputs{
+    display: block;
+}
+.yearsselection input{
+    width: 330px;
+}
+
+.incrementanddecrementoptions{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.incrementanddecrementoptions button{
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    font-size: px;
+    margin: 1px;
+    border-radius: 50%;
+    width: 25px;
+}
+
+/* Hide the number input arrows in all modern browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+
+

@@ -1,0 +1,171 @@
+<section>
+    <div class="main container-fluid dashboard">
+        <div class="header">
+            <!-- <h1 class="title"><span>Welcome</span>, Mr. {{ username }}, to our esteemed admin dashboard.</h1> -->
+         <h3>Welcome,{{ username }}</h3>
+        </div>
+         
+         <div class="container">
+            <div class="row" >
+              <div class="col-md-3 col">
+                <h3 class="heading">Loans Applied</h3>
+                <span>{{ loansApplied }}</span>
+              </div>
+              <div class="col-md-3 col">
+                <h3 class="heading">Active users</h3>
+                <span>{{ userCount }}</span>
+              </div>
+              <div class="col-md-3 col">
+                <h3 class="heading">Pending loans</h3>
+                <span>{{ pendingLoans }}</span>
+              </div>
+            </div>
+          </div>
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th>S.NO</th>
+                <th>User id</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Pan Number</th>
+                <th>State</th>
+                <th>City</th>
+                <th>Branch</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users | paginate: { itemsPerPage: 4, currentPage: page } ; let i = index">
+                <td>{{(page - 1) * 4 + i + 1}}</td>
+                <td>{{user.id}}</td>
+                <td>{{user.firstname}}</td>
+                <td>{{user.lastname}}</td>
+                <td>{{user.phonenumber}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.pan}}</td>
+                <td>{{user.state}}</td>
+                <td>{{user.city}}</td>
+                <td>{{user.branch}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>
+          
+    </div>
+
+     
+</section>
+
+
+<style>
+
+    .header{
+        display: flex;
+        justify-content: center;
+        margin: 10px;
+    }
+
+    /* Style the dashboard container */
+    .dashboard {
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: 90vh;
+    }
+
+
+    .container{
+        margin-top: 20px;
+    }
+
+    .row{
+        margin-left: 200px;
+    }
+
+    .col{
+        margin: 10px 5px;
+        padding: 10px 0;
+        /* background-color: darkgray; */
+        background-color: lightslategray;
+        border-radius: 10px;
+    }
+
+    .col h3{
+        text-align: center;
+        font-size: 22px;
+        color: white
+    }
+
+    .col span{
+        display: flex;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bolder;
+        color: white;
+    }
+
+
+    
+
+/* Style the table */
+/* Apply a professional style to the table */
+.table {
+  width: 95%;
+  border-collapse: separate;
+/* Adjust the spacing between rows */
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 2% auto;
+}
+
+/* Style table headers */
+.table th {
+  background-color: #007BFF;
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  /* border-radius: 5px; */
+}
+
+/* Style table cells */
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Style alternating rows with background color */
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Hover effect for rows */
+.table tbody tr:hover {
+  background-color: #e6e6e6;
+}
+
+/* Add a bottom border to the last row */
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.pagination-controls{
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+  }
+
+
+</style>

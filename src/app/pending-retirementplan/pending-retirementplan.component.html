@@ -1,0 +1,45 @@
+
+<!-- retimentplan datas.... -->
+<div class="retimentPlans">
+    <h2 class="title">Pending Retirment Plans</h2>
+    <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User id</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Date of Birth</th>
+          <th>Mobile Number</th>
+          <th>Annual Income</th>
+          <th>Plan</th>
+          <th>Number of years</th>
+          <th>Interest Rate</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let applicant of retirmentPlanApplicants | paginate: { itemsPerPage: 4, currentPage: page } ">
+          <td>{{applicant.userId}}</td>
+          <td>{{ getUserDetails(applicant.userId)?.firstname }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.lastname }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.email }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.dateofbirth }}</td>
+          <td>{{ getUserDetails(applicant.userId)?.phonenumber }}</td>
+          <td>{{applicant.annualIncome}}</td>
+          <td>{{applicant.plan}}</td>
+          <td>{{applicant.numberOfYears}}</td>
+          <td>{{applicant.interest}}</td>
+          <td class="accept-rejctbtn">
+            <button class="accept-button" (click)="openConfirmationDialog('accepted', applicant)">Accept</button>
+            <button class="delete-button" (click)="openConfirmationDialog('rejected', applicant)">Reject</button>
+          </td>
+        </tr>
+      </tbody>
+    </table> 
+  </div>
+  </div>
+  
+
+  <pagination-controls (pageChange)="page = $event" class="pagination-controls"></pagination-controls>

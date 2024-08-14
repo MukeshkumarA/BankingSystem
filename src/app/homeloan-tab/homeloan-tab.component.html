@@ -1,0 +1,11 @@
+<mat-tab-group (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Pending">
+      <app-homeloan *ngIf="activeTab === 'homeLoan'"></app-homeloan>
+    </mat-tab>
+    <mat-tab label="Accepted">
+      <app-acceptedhomeloans *ngIf="activeTab === 'acceptedLoan'"></app-acceptedhomeloans>
+    </mat-tab>
+    <mat-tab label="Rejected">
+      <app-rejectedhomeloans *ngIf="activeTab === 'rejectedLoan'"></app-rejectedhomeloans>
+    </mat-tab>
+  </mat-tab-group>

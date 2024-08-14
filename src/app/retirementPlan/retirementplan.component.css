@@ -1,0 +1,22 @@
+.head-container{
+    margin-top: 3%;
+    text-align: center;
+}
+
+.head-container h1{
+    font-size: 30px;
+}
+
+.body-container{
+    width: 100vw;
+    margin: 0 auto;
+    /* height: max-content; */
+}
+
+iframe{
+    border: 0;
+    width: 100vw;
+    height: 110vh;
+    margin: 2% auto;
+    /* height: max-content; */
+}

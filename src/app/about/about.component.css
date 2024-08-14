@@ -1,0 +1,36 @@
+
+#about-us {
+    padding-top: 3%;
+  }
+  
+  .abt-head {
+    text-align: center;
+  }
+  
+  .abt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 4% 5%;
+  }
+  
+  .abt-img {
+    flex: 1;
+    max-width: 50%;
+  }
+  
+    .abt-img img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 10px;
+    }
+  
+  .abt-content {
+    flex: 1;
+    /*padding-left: 5%;*/
+    padding-right: 2px;
+  }
+  
+    .abt-content h2 {
+      padding-bottom: 3%;
+    }

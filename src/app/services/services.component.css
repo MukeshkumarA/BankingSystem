@@ -1,0 +1,93 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#services {
+    padding-top: 3%;
+  }
+  
+#services .container{
+    margin:0 auto;
+    background-color: white;
+}
+
+#services .row {
+    margin-bottom: 5%;
+  }
+
+    
+    .serviceshead {
+      text-align: center;
+    }
+
+    .serviceshead p {
+        display: block;
+        margin: 20px auto;
+        width: 60%;
+      }
+    
+    .addservice {
+      position: absolute;
+      margin: -35px 0 0 75px;
+      font-size: 25px;
+        color: blue;
+    }
+    
+    
+    .line {
+      width: 3%;
+      height: 4px;
+      display: block;
+      margin: 0 auto;
+      /*margin-top: -8px;*/
+      /*border-top: 1px solid black;*/
+      background-color: blue;
+      border-radius: 3px;
+    }
+
+    .service {
+        border-radius: 5px;
+        padding: 8% 3%;
+        text-align: center;
+        /*background-color: white;*/
+        background-color: deepskyblue;
+        /*background-color: #6495ED;*/
+        /*box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);*/
+        box-shadow: 0 0 20px 2px rgba(0, 0, 0, .1);
+        transition: 800ms;
+        height: 330px;
+      }
+
+
+      
+  .service:hover {
+    transform: scale(1.2);
+    z-index: 2;
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+  }
+
+  .service h4 {
+    margin-top: 18px;
+    font-weight: bold;
+    /*color: cornflowerblue;*/
+    color: white;
+  }
+
+  .service img {
+    width: 150px !important;
+    padding: 10px;
+  }
+
+.service-grid {
+  margin-top: 5%;
+}
+
+.service p {
+  margin-top: 5%;
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.4;
+}

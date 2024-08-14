@@ -1,0 +1,191 @@
+
+<body>
+    <header>
+
+        <nav class="navigationbar">
+
+            <a href="" class="headline">
+                <span id="logo">&#10070;</span>
+                <h2 id="title">City Union Bank</h2>
+            </a>
+
+            <input type="checkbox" id="toggle_button">
+            <label for="toggle_button" class="menue_bar">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+            </label>
+
+
+            <ul id="navlist" *ngIf="!isAdminRoute() && !isUserRoute()">
+
+                <li routerLinkActive="active"><a routerLink="home">Home</a></li>
+
+                <li routerLinkActive="active" class="expand_list">
+                    <input type="checkbox" id="service_box">
+
+                    <label routerLink="services" for="service_box">Services</label>
+                    <ul class="dropdown">
+
+                        <li class="retirementplan"><a routerLink="retirementplanapplication">Retirement plan</a></li>
+
+                        <li class="expand_list_sidewards">
+                            <input type="checkbox" id="special_box">
+                            <label for="special_box">Loans 
+                            </label>
+                            <ul class="sidewardsDrop">
+                                <li>
+                                    <a routerLink="loanapplication">Home loans</a>
+                                </li>
+                                <li>
+                                    <a routerLink="loanapplication">Vehicle loans</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                        <li class="expand_list_downwards">
+                            <input type="checkbox" id="payment_box">
+                            <label for="payment_box">Cards 
+                            </label>
+                            <ul class="downwardsDrop">
+                                <li>
+                                    <a routerLink="creditcardapplication">Credit card</a>
+                                </li>
+                                <li>
+                                    <a routerLink="debitcardapplication">Debit card </a>
+                                    <!-- <br>transfer</a> -->
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+
+                    <li routerLinkActive="active"><a routerLink="about">About</a></li>
+                    <li routerLinkActive="active"><a routerLink="contact">Contact</a></li>
+
+                    <li routerLinkActive="active" class="expand_list">
+                        <input type="checkbox" id="log_in_box">
+    
+                        <label for="log_in_box">Log in</label>
+    
+                        <ul class="dropdown">
+                            <li>
+                                <a (click)="openLoginModal()">Log in</a>
+                            </li>
+
+                            <li class="expand_list_downwards">
+                                <input type="checkbox" id="sign_up_box">
+                                <label for="payment_box">Register options
+                                </label>
+                                <ul class="downwardsDrop registeroptions">
+                                    <li>
+                                        <a (click)="openEmployeeSignupModal()">Employee registration</a>
+                                    </li>
+                                    <li>
+                                        <a (click)="openSignupModal()">User registration</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+            </ul>   
+
+
+
+            <ul id="navlist" *ngIf="isAdminRoute()">
+
+                <li routerLinkActive="active" ><a [routerLink]="'admin/' + username + '/' + role"> Dahsboard </a></li>
+
+                <li routerLinkActive="active" class="expand_list">
+                    <input type="checkbox" id="log_in_box">
+
+                    <label for="log_in_box">Loans</label>
+
+                    <ul class="dropdown">
+                        <li>
+                            <a routerLink="admin/homeloanstab">Home loans</a>
+                        </li>
+                        <li>
+                            <a routerLink="admin/vehicleloanstab">Vehicle loans</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- <li routerLinkActive="active" class="expand_list">
+                    <input type="checkbox" id="log_in_box">
+
+                    <label for="log_in_box">Cards</label>
+
+                    <ul class="dropdown">
+                        <li>
+                            <a routerLink="admin/homeloanstab">Credit cards</a>
+                        </li>
+                        <li>
+                            <a routerLink="admin/vehicleloanstab">Debit cards</a>
+                        </li>
+                    </ul>
+                </li> -->
+
+                <li routerLinkActive="active"><a routerLink="admin/retimentplantab">Retirement Plans</a></li>
+                <li routerLinkActive="active"><a routerLink="admin/enquirylist">Enquiry</a></li>
+                <li routerLinkActive="active" class="adminidentity" id="image" (click)="toggleProfileDiv()"><a>
+                    <img [src]="imageurl" alt="profile">
+                </a>
+             </li>
+                
+            </ul>
+
+            
+            <ul class="usernavigation" id="navlist" *ngIf="isUserRoute()">
+
+                <li routerLinkActive="active" ><a [routerLink]="'user/' + username + '/' + role">Dashboard</a></li>
+                <li routerLinkActive="active" ><a routerLink="user/getcreditscore">Credit Score</a></li>
+                <li routerLinkActive="active" ><a routerLink="user/applications">Applications</a></li>
+                <li routerLinkActive="active" class="userIdentity"><a>
+                    <div class="userdetails" (click)="toggleUserProfile()">
+                        <span>{{ usernamefirstletter }}</span>
+                    </div>
+                </a></li>                
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+    <div class="adminprofile" *ngIf="showProfileDiv">
+        <fa-icon [icon]="faXmark" class="close-icon" (click)="toggleProfileDiv()"></fa-icon>
+        <div class="image">
+            <img [src]="imageurl" alt="profile">
+        </div>
+        <div class="welcome">
+            Hi, {{ username }}
+        </div>
+        <div class="logout">
+            <button routerLink="home" (click)="adminlogout()">Logout</button>
+        </div>               
+    </div>
+
+    <div class="userprofile" *ngIf="showUserDetails">
+        <fa-icon [icon]="faXmark" class="close-icon" (click)="toggleUserProfile()"></fa-icon>
+        <div class="welcome">
+            Hi, {{ username }}            
+        </div>
+        <div class="userInfo">
+            User id : <span>{{ userId }}</span><br>
+            User name: <span>{{ username }}</span>
+        </div>
+        <div class="logout">
+            <button routerLink="home" (click)="userlogout()">Logout</button>
+        </div>              
+    </div>
+
+
+</body>

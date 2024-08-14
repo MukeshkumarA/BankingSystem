@@ -1,0 +1,104 @@
+
+.footer {
+    /* background-color: #f6fbfd; */
+    background-color: cornflowerblue;
+    color: white;
+    padding-top: 5%;
+  }
+  
+    .footer .container {
+      display: block;
+      margin: 0 auto;
+    }
+  
+    .context p{
+        font-size: 1rem;
+    }
+
+  .footer-social {
+    margin-top: 35px !important;
+  }
+  
+    .footer-social a fa-icon {
+      border: 1px solid white;
+      padding: 10px 12px;
+      border-radius: 50px;
+      margin-right: 10px;
+      width: 150px !important;
+      color: white;
+      transition: all 0.2s ease, color 0.2s ease;
+    }
+  
+      .footer-social a fa-icon.youtube {
+        padding: 10px !important;
+      }
+  
+    .footer-social a :hover {
+      background-color: cornflowerblue;
+      color: black;
+    }
+
+  .footer li {
+    list-style-type: none;
+    font-size: 1.2rem;
+  }
+  
+  .col1 img {
+    margin-top: -20px;
+  }
+  
+  .col1{
+     width: 250px;
+  }
+  
+  .col2 p, .col4 p {
+    font-size: 1.5rem;
+    /* font-weight: bold; */
+  }
+  
+  /* .col3 {
+    margin-top: 26px;
+  } */
+
+  .col3{
+    margin-top: 5%;
+  }
+  
+  .footer ul {
+    line-height: 35px;
+  }
+  
+  
+  .copyright {
+    padding-top: 4%;
+    padding-bottom: 2%;
+    text-align: center;
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .footer .col1, .col2, .col3, .col4 {
+      text-align: center;
+    }
+  
+  
+  
+    .col2, .col4, .col3 {
+      padding-top: 10%;
+    }
+  
+    .col1 .context {
+      width: 200px;
+      margin: 0 120px;
+    }
+  }
+
+  #logo{
+    font-size: 3rem;
+  }
+  
+  .footer-logo {
+    color: white;
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-left: 10px;
+  }
